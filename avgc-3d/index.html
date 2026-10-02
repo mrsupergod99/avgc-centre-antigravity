@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AVGC Center of Excellence - 25,000 m² Campus 3D Architectural Visualizer</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Offline-First Local Three.js Libraries -->
+  <script src="js/three.min.js"></script>
+  <script src="js/OrbitControls.js"></script>
+  <script src="js/OBJExporter.js"></script>
+  <script src="js/GLTFExporter.js"></script>
+</head>
+<body>
+
+  <!-- 3D WebGL Canvas Viewport -->
+  <div id="canvas-container"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast-notification" class="toast-msg">Welcome to AVGC Center 3D Visualization</div>
+
+  <!-- UI Overlay -->
+  <div class="ui-overlay">
+    
+    <!-- Top Navigation Header -->
+    <header class="top-nav interactive">
+      <div class="brand-section">
+        <div class="brand-badge">AVGC</div>
+        <div class="brand-title">
+          <h1>AVGC CENTER OF EXCELLENCE</h1>
+          <p>Architectural 3D Masterplan • Plot Area: 25,000 m² • Animation, VFX, Gaming & Comics</p>
+        </div>
+      </div>
+
+      <div class="project-stats">
+        <div class="stat-chip">
+          <span class="dot"></span>
+          <span>Plot: 25,000 m²</span>
+        </div>
+        <div class="stat-chip accent-amber">
+          <span class="dot"></span>
+          <span>920 Students • 46 Faculty</span>
+        </div>
+        <div class="stat-chip">
+          <span class="dot"></span>
+          <span>24 Studios • 500-Seat Auditorium</span>
+        </div>
+        <div class="stat-chip">
+          <span class="dot"></span>
+          <span>Hostels & Staff Villas</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace (Left Toolbar & Right Inspector) -->
+    <div class="main-layout">
+      
+      <!-- Left Floating Dock: Cameras, Floors, Exploded & Lighting -->
+      <aside class="left-dock interactive">
+        
+        <!-- Viewpoints Card -->
+        <div class="dock-card">
+          <h3>Architectural Perspectives</h3>
+          <div class="btn-group-grid">
+            <button class="btn-action active" data-view="master">🌐 Master Aerial</button>
+            <button class="btn-action" data-view="entrance">🚪 Arrival Plaza</button>
+            <button class="btn-action" data-view="atrium">🏛 Central Atrium</button>
+            <button class="btn-action" data-view="mocap">🎥 MoCap Studio</button>
+            <button class="btn-action" data-view="auditorium">🎭 Auditorium</button>
+            <button class="btn-action" data-view="cafeteria">☕ Cafeteria</button>
+            <button class="btn-action" data-view="residential">🏘 Hostels & Housing</button>
+            <button class="btn-action" data-view="sports">🏀 Sports Arena</button>
+          </div>
+        </div>
+
+        <!-- Camera & Navigation Modes -->
+        <div class="dock-card">
+          <h3>Navigation Modes</h3>
+          <div class="btn-group-grid">
+            <button id="btn-walk-mode" class="btn-action">🚶 Walk Mode</button>
+            <button id="btn-tour" class="btn-action">🎬 Guided Tour</button>
+          </div>
+        </div>
+
+        <!-- Floor-by-Floor & Exploded View -->
+        <div class="dock-card">
+          <h3>Floor Level Explorer</h3>
+          <div class="floor-filter-bar">
+            <button class="floor-btn active" data-floor="all">ALL</button>
+            <button class="floor-btn" data-floor="ground">GROUND</button>
+            <button class="floor-btn" data-floor="first">LEVEL 1</button>
+            <button class="floor-btn" data-floor="roof">ROOF</button>
+          </div>
+          
+          <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 6px;">
+            <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted);">
+              <span>Exploded View</span>
+              <span id="exploded-val" style="color: var(--accent); font-weight: 700;">0%</span>
+            </div>
+            <input type="range" id="exploded-slider" class="range-slider" style="width: 100%;" min="0" max="1" step="0.01" value="0">
+          </div>
+        </div>
+
+        <!-- Lighting & Shading Styles -->
+        <div class="dock-card">
+          <h3>Shading & Environment</h3>
+          <div class="btn-group-3">
+            <button class="btn-action active" data-shading="realistic">Realistic</button>
+            <button class="btn-action" data-shading="clay">Clay Model</button>
+            <button class="btn-action" data-shading="night">Night</button>
+          </div>
+        </div>
+
+        <!-- Architectural Layer Filters -->
+        <div class="dock-card">
+          <h3>Campus Layers</h3>
+          <div class="layer-list">
+            <label class="layer-item">
+              <span>Academic Complex</span>
+              <input type="checkbox" id="layer-arch" checked>
+            </label>
+            <label class="layer-item">
+              <span>Hostels & Staff Housing</span>
+              <input type="checkbox" id="layer-res" checked>
+            </label>
+            <label class="layer-item">
+              <span>Sports & Athletics</span>
+              <input type="checkbox" id="layer-sports" checked>
+            </label>
+            <label class="layer-item">
+              <span>Landscape & 100+ Trees</span>
+              <input type="checkbox" id="layer-trees" checked>
+            </label>
+            <label class="layer-item">
+              <span>Roads & Plazas</span>
+              <input type="checkbox" id="layer-roads" checked>
+            </label>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- Right Floating Dock: Inspector Card & Program Directory -->
+      <aside class="right-dock interactive">
+        
+        <!-- Live Architectural Space Inspector -->
+        <div class="inspector-panel">
+          <div class="inspector-header">
+            <span id="insp-badge" class="dept-badge vfx">Animation & VFX / Tech</span>
+            <h2 id="insp-title" class="space-title">Motion Capture Studio</h2>
+            <p id="insp-sub" class="space-subtitle">Production & Tech Wing • Level: First Floor</p>
+          </div>
+
+          <div class="spec-grid">
+            <div class="spec-box">
+              <div class="spec-label">Floor Area</div>
+              <div id="insp-area" class="spec-value">216 m²</div>
+            </div>
+            <div class="spec-box">
+              <div class="spec-label">Dimensions (L × W)</div>
+              <div id="insp-dim" class="spec-value">18.0m × 12.0m</div>
+            </div>
+            <div class="spec-box">
+              <div class="spec-label">Occupancy / Capacity</div>
+              <div id="insp-cap" class="spec-value">25 Crew / Actors</div>
+            </div>
+            <div class="spec-box">
+              <div class="spec-label">Clear Ceiling Height</div>
+              <div id="insp-level" class="spec-value">8.4m (Double Height)</div>
+            </div>
+          </div>
+
+          <div id="insp-desc" class="space-description">
+            24-Camera Vicon Optical Tracking Rig, Full Green-Screen Cyclorama Wall, Wire-Rigging Ceiling Truss, Isolated Sound Floor, Dedicated Control & Calibration Booth.
+          </div>
+        </div>
+
+        <!-- Searchable Campus Area Directory -->
+        <div class="dock-card directory-card">
+          <h3>
+            <span>Campus Program Directory</span>
+            <span style="font-size: 10px; color: var(--accent);">24 Spaces</span>
+          </h3>
+          <input type="text" id="space-search" class="search-input" placeholder="Search studios, hostels, labs, admin...">
+          <div id="spaces-list" class="space-list">
+            <!-- Dynamically populated by ui-controller.js -->
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+    <!-- Bottom Control Deck -->
+    <footer class="bottom-dock interactive">
+      
+      <!-- Sunlight / Time-of-Day Slider -->
+      <div class="bottom-group">
+        <div class="slider-group">
+          <span class="slider-label">
+            ☀️ Sun Time
+            <span id="sun-val" style="color: var(--accent); font-weight: 700; margin-left: 4px;">14:00</span>
+          </span>
+          <input type="range" id="sun-slider" class="range-slider" min="6" max="22" step="0.25" value="14">
+        </div>
+
+        <div id="walk-help" class="walk-tooltip" style="display: none;">
+          <span>Walk:</span>
+          <span class="key-badge">W</span>
+          <span class="key-badge">A</span>
+          <span class="key-badge">S</span>
+          <span class="key-badge">D</span>
+          <span style="margin-left: 6px;">Look: Mouse Click + Drag</span>
+        </div>
+      </div>
+
+      <!-- Action & Export Buttons -->
+      <div class="bottom-group">
+        <button id="btn-snapshot" class="btn-action" title="Capture high-res rendering image">
+          📸 Render Snapshot
+        </button>
+        <button id="btn-export-3d" class="btn-action" title="Export 3D model for Blender, SketchUp, Rhino">
+          📦 Export 3D Model (OBJ)
+        </button>
+      </div>
+
+    </footer>
+
+  </div>
+
+  <!-- Application Bootstrap -->
+  <script src="js/avgc-campus.js"></script>
+  <script src="js/ui-controller.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      AVGC.init("canvas-container");
+      AVGC_UI.init();
+    });
+  </script>
+
+</body>
+</html>
