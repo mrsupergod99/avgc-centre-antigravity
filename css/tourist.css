@@ -1,0 +1,241 @@
+/**
+ * KONKANIGO TOURIST MODE STYLING
+ * Mature, high-utility, streamlined travel aesthetics.
+ */
+
+.tourist-view {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tourist-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tourist-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  background: #1C2833;
+  color: #F1C40F;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+.tourist-title {
+  font-size: 24px;
+  color: var(--navy);
+}
+
+.tourist-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.duration-selector {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.duration-btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-color);
+  background: #FFFFFF;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.duration-btn.active {
+  background: var(--navy);
+  color: #FFFFFF;
+  border-color: var(--navy);
+}
+
+.pack-info-strip {
+  background: #EBF5FB;
+  border-left: 4px solid var(--secondary);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pack-info-strip span {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--secondary);
+  text-transform: uppercase;
+}
+
+.pack-info-strip p {
+  font-size: 12px;
+  color: var(--navy);
+}
+
+.scenarios-tabs-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.scenario-tab-btn {
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-color);
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  transition: all 0.15s ease;
+}
+
+.scenario-tab-btn.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.scenario-tab-btn.mastered .check-icon {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.active-scenario-card {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-top: 4px solid var(--secondary);
+}
+
+.scenario-card-top {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.scen-icon-big {
+  font-size: 32px;
+}
+
+.scenario-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--secondary);
+  text-transform: uppercase;
+}
+
+.scenario-heading {
+  font-size: 17px;
+  margin: 2px 0;
+}
+
+.scenario-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.scenario-phrases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tourist-phrase-card {
+  background: #F9FAFB;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: border-color 0.15s ease;
+}
+
+.tourist-phrase-card:hover {
+  border-color: #CBD5E1;
+}
+
+.phrase-number {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-muted);
+  padding-top: 2px;
+}
+
+.phrase-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.phrase-dev {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.phrase-rom {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.phrase-eng {
+  font-size: 13px;
+  color: var(--navy);
+}
+
+.phrase-phon {
+  font-size: 11px;
+  color: var(--accent);
+}
+
+.phrase-context {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.btn-tourist-audio {
+  background: #EBF5FB;
+  border: 1px solid #AED6F1;
+  color: var(--secondary);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-tourist-audio:hover {
+  background: #D4E6F1;
+}
+
+.scenario-footer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}

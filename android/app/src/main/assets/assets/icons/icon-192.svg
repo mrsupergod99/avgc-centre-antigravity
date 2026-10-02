@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0C2340" />
+      <stop offset="100%" stop-color="#1A5276" />
+    </linearGradient>
+    <linearGradient id="fishGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F39C12" />
+      <stop offset="50%" stop-color="#D35400" />
+      <stop offset="100%" stop-color="#C0392B" />
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Sea Navy Round Background -->
+  <rect width="192" height="192" rx="42" fill="url(#bgGrad)" />
+
+  <!-- Sun Rays / Cultural Wave -->
+  <circle cx="96" cy="96" r="68" fill="none" stroke="#2980B9" stroke-width="2" stroke-dasharray="4,6" opacity="0.4" />
+
+  <!-- Torli Fish Silhouette -->
+  <!-- Tail -->
+  <path d="M 44 96 Q 24 72 26 104 Q 24 130 44 108 Z" fill="#F39C12" />
+  <!-- Dorsal -->
+  <path d="M 78 68 Q 98 48 118 70 Z" fill="#F39C12" />
+  <!-- Body -->
+  <ellipse cx="98" cy="98" rx="46" ry="34" fill="url(#fishGrad)" />
+  <!-- Belly -->
+  <path d="M 72 106 Q 98 126 126 106 Q 98 114 72 106 Z" fill="#FCF3CF" />
+  <!-- Eye -->
+  <ellipse cx="120" cy="88" rx="7" ry="9" fill="#FFFFFF" />
+  <circle cx="122" cy="89" r="4" fill="#0C2340" />
+  <circle cx="123" cy="87" r="1.5" fill="#FFFFFF" />
+  <!-- Happy Smile -->
+  <path d="M 128 100 Q 134 106 140 100" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-linecap="round" />
+  <!-- Pectoral Fin -->
+  <path d="M 84 96 Q 74 112 88 118 Q 92 108 90 96 Z" fill="#2980B9" />
+
+  <!-- KonkaniGO Tiny Bottom Text -->
+  <text x="96" y="160" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-weight="900" font-size="14" letter-spacing="1.5">KONKANIGO</text>
+</svg>

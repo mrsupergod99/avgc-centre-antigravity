@@ -1,0 +1,101 @@
+/**
+ * KONKANIGO MASCOT STYLING & ANIMATIONS
+ * Torli the Goan Pearlspot Fish
+ */
+
+.torli-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  user-select: none;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.torli-svg {
+  filter: drop-shadow(0 6px 12px rgba(12, 35, 64, 0.15));
+  animation: torliFloat 3.2s ease-in-out infinite;
+}
+
+/* Buoyant gentle sea float animation */
+@keyframes torliFloat {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(1.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Waving pectoral fin animation */
+.torli-fin-wave {
+  transform-origin: 52px 64px;
+  animation: finWave 1.4s ease-in-out infinite;
+}
+
+@keyframes finWave {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-18deg); }
+}
+
+/* State-specific transforms */
+.torli-celebration .torli-svg {
+  animation: torliCelebrate 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes torliCelebrate {
+  0% { transform: translateY(0px) scale(1) rotate(-3deg); }
+  100% { transform: translateY(-12px) scale(1.06) rotate(3deg); }
+}
+
+.torli-correct .torli-svg {
+  animation: torliJump 0.6s ease-out;
+}
+
+@keyframes torliJump {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-16px) scale(1.1); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.torli-wrong .torli-svg {
+  animation: torliShake 0.4s ease-in-out;
+}
+
+@keyframes torliShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px) rotate(-4deg); }
+  75% { transform: translateX(6px) rotate(4deg); }
+}
+
+/* Speech Bubble */
+.torli-speech-bubble {
+  position: absolute;
+  top: -38px;
+  background: #FFFFFF;
+  color: var(--navy);
+  border: 1.5px solid var(--accent);
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  z-index: 5;
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.torli-speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid var(--accent);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
